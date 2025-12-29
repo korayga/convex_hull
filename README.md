@@ -1,5 +1,4 @@
-# Algoritma Analizi ve Tasarımı Ödevi
-## Kapalı Çevrim (Convex Hull) Uygulaması - Detaylı Kullanım Kılavuzu
+# Kapalı Çevrim (Convex Hull) Uygulaması 
 
 ---
 
