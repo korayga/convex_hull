@@ -86,7 +86,7 @@ python performance_test.py
    
 2. Noktaları Kutupsal Açılarına Göre Sırala
    - Pivot noktasına göre polar açı hesapla (math.atan2)
-   - Eğitim amaçlı Bubble Sort kullanılmıştır → O(N²)
+   - Python sorted() → O(N log N)
    
 3. Stack (Yığın) ile Tarama → O(N)
    - Her nokta için:
