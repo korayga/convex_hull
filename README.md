@@ -98,11 +98,11 @@ python performance_test.py
 | Adım | İşlem | Karmaşıklık |
 |------|-------|-------------|
 | Pivot Bulma | Linear tarama | O(N) |
-| Sıralama | Bubble Sort (Eğitim Amaçlı) | O(N²) |
+| Sıralama | Python sorted() (Tim Sort) | O(N log N) |
 | Yığın Tarama | Her nokta 1 kez | O(N) |
-| **TOPLAM** | **Sıralama Baskın** | **O(N²)** |
-*(Not: Standart Graham Scan O(N log N) karmaşıklığındadır, ancak bu projede algoritma mantığını göstermek için Bubble Sort kullanılmıştır.)*
+| **TOPLAM** | **Sıralama Baskın** | **O(N log N)** |
 
+**Not:** Graham Scan algoritmasının genel karmaşıklığı sıralama adımı tarafından belirlenir. Python'un `sorted()` fonksiyonu Tim Sort algoritmasını kullanır ve O(N log N) karmaşıklığa sahiptir.Bunun yerine Bubble sort veya farklı sort algoritması kullanılırsa O(N^2) olur.
 
 #### Avantajları
 - ✅ Kaba Kuvvet yöntemine göre çok daha hızlı

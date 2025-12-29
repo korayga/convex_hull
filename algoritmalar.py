@@ -94,37 +94,19 @@ class KonveksZarfCozucu:
         # 1. baslangic noktasi (en alt sol)
         pivot = min(noktalar, key=lambda p: (p[1], p[0]))
 
-        # 2. diger noktalari sirala
+        # 2. diger noktalari sirala (O(n log n) ile)
         diger_noktalar = [p for p in noktalar if p != pivot]
         
-        # Bubble Sort
+        # Python'un sorted() fonksiyonu ile O(n log n) siralama
         # 1. Kriter: Pivot noktasina gore aci (kucukten buyuge)
         # 2. Kriter: Aci esitse, pivota olan mesafe (kucukten buyuge)
         
-        m = len(diger_noktalar)
-        for i in range(m):
-            for j in range(0, m-i-1):
-                p1 = diger_noktalar[j]
-                p2 = diger_noktalar[j+1]
-                
-                aci1 = KonveksZarfCozucu.polar_aci_hesapla(pivot, p1)
-                aci2 = KonveksZarfCozucu.polar_aci_hesapla(pivot, p2)
-                
-                yer_degistir = False
-                
-                if aci1 > aci2:
-                    yer_degistir = True
-                elif aci1 == aci2:
-                    # Acilar esitse mesafeye bak
-                    dist1 = KonveksZarfCozucu.mesafe_hesapla(pivot, p1)
-                    dist2 = KonveksZarfCozucu.mesafe_hesapla(pivot, p2)
-                    if dist1 > dist2:
-                        yer_degistir = True
-                
-                if yer_degistir:
-                    diger_noktalar[j], diger_noktalar[j+1] = diger_noktalar[j+1], diger_noktalar[j]
+        def siralama_anahtari(nokta):
+            aci = KonveksZarfCozucu.polar_aci_hesapla(pivot, nokta)
+            mesafe = KonveksZarfCozucu.mesafe_hesapla(pivot, nokta)
+            return (aci, mesafe)
         
-        sirali_noktalar = diger_noktalar
+        sirali_noktalar = sorted(diger_noktalar, key=siralama_anahtari)
 
         # 3. stack islemleri
         yigin = [pivot, sirali_noktalar[0]]
