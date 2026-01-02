@@ -10,7 +10,7 @@ class ConvexHullApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Kapali Cevrim Uygulamasi")
-        self.root.geometry("900x700")
+        self.root.geometry("1800x900")
         
         self.points = []
         
@@ -40,13 +40,24 @@ class ConvexHullApp:
     def generate_points(self):
         try:
             n = int(self.n_entry.get())
-            self.points = [(random.randint(0, 1000), random.randint(0, 1000)) for _ in range(n)]
+            self.points = [(random.randint(0, 100000), random.randint(0, 100000)) for _ in range(n)]
             self.plot_result([], "")
         except ValueError:
             pass
 
     def run_brute_force(self):
         if not self.points: return
+            
+        # 10000'den fazla nokta için uyarı
+        if len(self.points) >= 10000:
+            response = messagebox.askyesno(
+                "Uyarı",
+                f"Nokta sayısı ({len(self.points)}) çok fazla!\n"
+                "Kaba kuvvet algoritması uzun sürebilir.\n"
+                "Devam etmek istiyor musunuz?"
+            )
+            if not response:
+                return
         
         # UI güncellemesi için
         self.root.config(cursor="wait")
